@@ -1,0 +1,22 @@
+---
+profile: default
+
+variables:
+  {% raw -%}
+  report_date: "{{ env('REPORT_DATE', '') }}"
+  date_window: "{{ env('EMAIL_ENV', 'prod') }}"
+  {%- endraw %}
+
+engine:
+  type: spark
+  master:
+  jobname:
+
+providers:
+  source:
+    service:
+    hostname:
+    port:
+    database:
+    username:
+    password:

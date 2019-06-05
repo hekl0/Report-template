@@ -1,0 +1,13 @@
+# properties of email
+email:
+  prod:
+    smtp:
+      username:
+      pass:
+    subject:
+    from:
+    to:
+    cc:
+
+# structure of email
+struct:

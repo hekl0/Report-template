@@ -1,0 +1,25 @@
+<table class="{{data.table_class}}">
+    {% for tr_th in data.header_list %}
+        <tr>
+            {% for row in tr_th %}
+                <th colspan="{{row.colspan}}" rowspan="{{row.rowspan}}" class="{{row.class}}">{{row.val}}</th>
+            {% endfor %}
+        </tr>
+    {% endfor %}
+    
+    {% for tr_th in data.row_details %}
+        <tr>
+            {% for row in tr_th %}
+                <td class="{{row.class}}" colspan="{{row.colspan}}" rowspan="{{row.rowspan}}">{{row.val}}</td>
+            {% endfor %}
+        </tr>
+    {% endfor %}
+    
+    {% for tr_th in data.footer_list %}
+        <tr>
+            {% for row in tr_th %}
+                <td colspan="{{row.colspan}}" rowspan="{{row.rowspan}}" class="{{row.class}}">{{row.val}}</td>
+            {% endfor %}
+        </tr>
+    {% endfor %}
+</table>

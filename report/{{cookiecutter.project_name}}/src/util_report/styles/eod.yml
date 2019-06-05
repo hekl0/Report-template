@@ -1,0 +1,126 @@
+.footer_number:
+  background-color: '#CFE2F3'
+  color: '#000000'
+  font-family: Calibri
+  font-size: 11.0pt
+  font-weight: bold
+  padding: 3px
+  text-align: right
+  vertical-align: middle
+.footer_text:
+  background-color: '#CFE2F3'
+  color: '#000000'
+  font-family: Calibri
+  font-size: 11.0pt
+  font-weight: bold
+  padding: 3px
+  text-align: center
+  vertical-align: middle
+.header_number: {}
+.header_text:
+  background-color: rgb(41,54,119)
+  color: rgb(255,255,255)
+  font-family: Calibri
+  font-size: Nonept
+  font-weight: bold
+  max-width: 30px !important;
+  padding: 3px
+  text-align: center
+  vertical-align: middle
+  overflow: hidden
+  border-top-style: SOLID !important
+.sub_header_center:
+  background-color: rgb(201,218,247)
+  font-family: Calibri
+  font-size: Nonept
+  font-weight: bold
+  padding: 3px
+  text-align: center
+  vertical-align: middle
+  overflow: hidden
+.sub_header_text:
+  background-color: rgb(201,218,247)
+  font-family: Calibri
+  font-size: Nonept
+  font-weight: bold
+  padding: 3px
+  text-align: left
+  vertical-align: middle
+  overflow: hidden
+.sub_header_number:
+  background-color: rgb(201,218,247)
+  font-family: Calibri
+  font-size: Nonept
+  font-weight: bold
+  padding: 3px
+  text-align: right
+  vertical-align: middle
+  overflow: hidden
+.report_title:
+  text-align: left
+.row_number:
+  color: '#000000'
+  font-family: Roboto Mono
+  font-size: 9.0pt
+  padding: 3px
+  text-align: right
+  vertical-align: middle
+.row_number_left:
+  color: '#000000'
+  font-family: Roboto Mono
+  font-size: 9.0pt
+  padding: 3px
+  text-align: left
+  vertical-align: middle
+.row_number_center:
+  color: '#000000'
+  font-family: Roboto Mono
+  font-size: 9.0pt
+  padding: 3px
+  text-align: center
+  vertical-align: middle
+.row_number_empty:
+  color: '#000000'
+  font-family: Roboto Mono
+  font-size: 9.0pt
+  padding: 3px
+  text-align: right
+  vertical-align: middle
+  height: 14px
+.row_text:
+  color: '#000000'
+  font-family: Calibri
+  font-size: 11.0pt
+  padding: 3px
+  vertical-align: middle
+table:
+  border-collapse: collapse
+  border-style: DOTTED
+  border-width: 1px
+  border-color: blue
+  table-layout: fixed
+  font-size: 10pt
+  font-family: arial,sans,sans-serif
+  width: 100%
+td:
+  border-collapse: collapse
+  border-style: DOTTED
+  border-width: 1px
+  border-color: blue
+th:
+  border-collapse: collapse
+  border-style: DOTTED
+  border-width: 1px
+  border-color: blue
+.extra_information_label:
+  margin-right: 10px
+.extras_information_val:
+  font-weight: bold
+body:
+  padding: 15px
+.table_daily:
+  width: 100%
+.table_area:
+  width: 70%
+.table_tv:
+  width: 70%
