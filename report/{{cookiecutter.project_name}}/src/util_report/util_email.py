@@ -2,6 +2,7 @@
 from __future__ import print_function, unicode_literals
 
 from email.utils import parseaddr
+from util_report.util_reports import get_styles
 
 
 # import sys
@@ -39,6 +40,10 @@ def render_header(config_header):
     return header
 
 
+def render_table(df):
+    render_content('table.html', {'data': df})
+
+
 def render_content(template_file=None, raw_content=None):
     """
     Render content from mail template
@@ -58,7 +63,8 @@ def render_content(template_file=None, raw_content=None):
         build_content = j2_env.get_template('%s/%s' % (MAIL_TEMPLATE_FOLDER, template_file)).render(raw_content)
     else:
         return False
-
+    print(build_content)
+    print(raw_content)
     response = re.sub('\n +', '', build_content)
     response = re.sub('\n+', '', response)
     response = re.sub('> +', '>', response)

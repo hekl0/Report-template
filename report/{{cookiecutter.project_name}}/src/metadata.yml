@@ -17,6 +17,6 @@ providers:
     service:
     hostname:
     port:
-    database:
+    path:
     username:
     password:

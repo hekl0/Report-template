@@ -16,4 +16,5 @@ header:
 
 table:
     headers:
+        level:
     highlight_index:

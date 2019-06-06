@@ -227,7 +227,7 @@ def get_header(header_info, report_date):
     return [header_list]
 
 
-def get_data_before_render(config_table, pd_df, table_class=''):
+def get_data_before_render(config_table, pd_df, report_date, table_class=''):
     headers = []
     for k, v in config_table['headers'].items():
         headers.extend(get_header(v, report_date))
