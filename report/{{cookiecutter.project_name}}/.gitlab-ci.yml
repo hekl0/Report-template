@@ -1,0 +1,23 @@
+stages:
+  - reporting
+
+reporting:prod:
+  image:
+    name: $IMAGE
+    entrypoint: ["start.sh"]
+  tags: [data, docker]
+  stage: reporting
+  before_script:
+    - pip install tkmail==3.1
+    - export PYSPARK_PYTHON=/opt/conda/bin/python
+    - export PYSPARK_DRIVER_PYTHON=/opt/conda/bin/python
+    - export REPORT_DATE=$(date --date="1 days ago" '+%Y-%m-%d')
+  script:
+    - echo $REPORT_DATE
+    - datalabframework run ./src/eod_report.ipynb --ExecutePreprocessor.timeout=-1
+  only:
+    refs:
+      - master
+  except:
+    - pushes
+    - web
