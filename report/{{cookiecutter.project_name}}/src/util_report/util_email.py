@@ -41,7 +41,7 @@ def render_header(config_header):
 
 
 def render_table(df):
-    render_content('table.html', {'data': df})
+    return render_content('table.html', {'data': df})
 
 
 def render_content(template_file=None, raw_content=None):
@@ -63,8 +63,7 @@ def render_content(template_file=None, raw_content=None):
         build_content = j2_env.get_template('%s/%s' % (MAIL_TEMPLATE_FOLDER, template_file)).render(raw_content)
     else:
         return False
-    print(build_content)
-    print(raw_content)
+    
     response = re.sub('\n +', '', build_content)
     response = re.sub('\n+', '', response)
     response = re.sub('> +', '>', response)
@@ -92,8 +91,8 @@ def send_mail_with_cc(config_email, content):
     subject = config_email['subject']
     username = config_email['smtp']['username']
     password = config_email['smtp']['password']
+    from_address = config_email['from']
     
-    from_address = "Phong Vu Report System <reportsystem@teko.vn>"
     print('send_mail_with_cc: from %s to %s' % (from_address, to[0]))
 
     rcpt = cc + to
