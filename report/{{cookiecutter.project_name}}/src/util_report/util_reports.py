@@ -227,18 +227,14 @@ def get_header(header_info, report_date):
     return [header_list]
 
 
-def get_data_before_render(config_list, pd_df, report_date, header_params, highlight_index={}, table_class=''):
-    if header_params['type'] == 'single':
-        headers = get_header(config_list[header_params['parent']][header_params['level']], report_date)
-    else:
-        headers = []
-        for k, v in config_list[header_params['parent']].items():
-            headers.extend(get_header(v, report_date))
+def get_data_before_render(config_table, pd_df, table_class=''):
+    headers = []
+    for k, v in config_table['headers'].items():
+        headers.extend(get_header(v, report_date))
         
     return {
-        'title': config_list['report_name'].replace('DD/MM/YYYY', report_date.strftime('%d/%m')),
         'header_list': headers,
-        'row_details': pd_to_custom_object(pd_df, highlight_index),
+        'row_details': pd_to_custom_object(pd_df, config_table['highlight_index']),
         'footer_list': [],
         'table_class': table_class
     }

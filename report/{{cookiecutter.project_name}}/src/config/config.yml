@@ -3,11 +3,17 @@ email:
   prod:
     smtp:
       username:
-      pass:
+      password:
     subject:
     from:
     to:
     cc:
 
-# structure of email
-struct:
+# structure of report table in email
+header:
+    report_name:
+    extras_information:
+
+table:
+    headers:
+    highlight_index:

@@ -28,6 +28,17 @@ from jinja2 import Environment, FileSystemLoader
 THIS_DIR = os.path.dirname(os.path.abspath(__file__))
 MAIL_TEMPLATE_FOLDER = 'mail_templates'
 
+def render_header(config_header):
+    header = render_content('header.html', {
+        'style': get_styles('eod.yml'), 
+        'data': {
+            'title': config_header['report_name'],
+            'extras_information': config_header['extras_information']
+        }
+    })
+    return header
+
+
 def render_content(template_file=None, raw_content=None):
     """
     Render content from mail template
@@ -53,10 +64,31 @@ def render_content(template_file=None, raw_content=None):
     response = re.sub('> +', '>', response)
     return response
 
-def send_mail_with_cc(to, cc, subject, content):
+
+def write_to_file_html(file, html):
+    from yattag import indent
+    html_pretty = indent(
+        html,
+        indentation = '    ',
+        newline = '\r\n',
+        indent_text = True
+    )
+    #Write to file 
+    f = open(file, "wb")
+    f.write(str(html_pretty).encode('utf-8'))
+    f.close()
+    print("write to file done")
+
+
+def send_mail_with_cc(config_email, content):
+    to = config_email['to']
+    cc = config_email['cc'] 
+    subject = config_email['subject']
+    username = config_email['smtp']['username']
+    password = config_email['smtp']['password']
+    
     from_address = "Phong Vu Report System <reportsystem@teko.vn>"
     print('send_mail_with_cc: from %s to %s' % (from_address, to[0]))
-    #bcc = "bccperson1@gmail.com,bccperson2@yahoo.com"
 
     rcpt = cc + to
     msg = MIMEMultipart('alternative')
@@ -64,7 +96,6 @@ def send_mail_with_cc(to, cc, subject, content):
     msg['From'] = from_address
     msg['To'] = ','.join(to)
     msg['Cc'] = ','.join(cc)
-    #msg['Bcc'] = bcc
 
     # Record the MIME types of both parts - text/plain and text/html.
     part = MIMEText(content, 'html')
@@ -78,6 +109,6 @@ def send_mail_with_cc(to, cc, subject, content):
     s.ehlo()
     s.starttls()
     s.ehlo()
-    s.login("reporting@phongvu.vn", "ugqywgmsripezhpt")
+    s.login(username, password)
     s.sendmail(from_address, rcpt, msg.as_string())
     s.quit()
