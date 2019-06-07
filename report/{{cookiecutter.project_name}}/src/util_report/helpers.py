@@ -9,7 +9,7 @@ def to_milion(num, u=1000000):
         
     return '{}'.format(num)
 
-def join_by_slag(first='-', second='-'):
+def join_by_slash(first='-', second='-'):
     if type(first) != 'str':
         first = str(first)
     if type(second) != 'str':
@@ -25,6 +25,37 @@ def add_comma_float(num):
 
 def number_colored(num, tag='span', color='#9900ff'):
     return '<%s style="color:%s;">%s</%s>' % (tag, color, str(num), tag)
+    
+def round_df(pd_df, decimals=2):
+    for pd_df_col in pd_df.columns:
+        pd_df[pd_df_col] = pd_df[pd_df_col].apply(lambda x:round(x,decimals))
+        
+    return pd_df
+
+def divide_cols(pd_df, cols, divide_unit=1000000):
+    for col in cols:
+        pd_df[col] = pd_df[col].apply(lambda x: float(x)/float(divide_unit))
+     
+def round_cols(pd_df, cols, decimals=2):
+    for col in cols:
+        pd_df[col] = pd_df[col].apply(lambda x: round(x, decimals))
+
+def change_values(pd_df, indexs, cols, val=''):
+    for index in indexs:
+        for col in cols:
+            pd_df.loc['{}'.format(index)]['{}'.format(col)] = val
+            
+    return pd_df
+
+def custom_divide(pd_df, divisor_col, dividend_col, zero_val=0):
+    res = []
+    for i in pd_df.index:
+        if pd_df.loc[i][dividend_col] == 0:
+            res.append(zero_val)
+        else:
+            res.append(float(pd_df.loc[i][divisor_col])/float(pd_df.loc[i][dividend_col]))
+            
+    return res
 
 def sortkeypicker(keynames):
     negate = set()
