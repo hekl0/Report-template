@@ -14,7 +14,7 @@ reporting:prod:
     - export REPORT_DATE=$(date --date="1 days ago" '+%Y-%m-%d')
   script:
     - echo $REPORT_DATE
-    - datalabframework run ./src/eod_report.ipynb --ExecutePreprocessor.timeout=-1
+    - datalabframework run ./src/report.ipynb --ExecutePreprocessor.timeout=-1
   only:
     refs:
       - master
